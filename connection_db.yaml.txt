@@ -1,6 +1,0 @@
-spring:
-	datasource:
-		url: jdbc:oracle:thin:@my.domain.com:1521:xe
-		driverClassName: oracle.jbdc.driver.OracleDriver
-		username: sys
-		password: oracle
