@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.carwebservice</groupId>
-	<artifactId>CarWebService</artifactId>
+	<artifactId>CarWebServiceBE</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>CarWebService</name>
 	<description>Demo project for Spring Boot</description>

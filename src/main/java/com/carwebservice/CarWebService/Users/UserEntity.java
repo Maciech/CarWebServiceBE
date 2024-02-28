@@ -29,10 +29,10 @@ public class UserEntity {
     private Date dateOfBirth;
 
     @Column(name = "EMAIL")
-    private String status;
+    private String email;
 
     @Column(name = "PHONE_NUMBER")
-    private Integer destination;
+    private Integer phoneNumber;
 
     @Column(name = "PASSWORD")
     private String password;
