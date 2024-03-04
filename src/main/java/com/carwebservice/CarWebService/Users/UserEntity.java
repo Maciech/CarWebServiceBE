@@ -37,6 +37,9 @@ public class UserEntity {
     @Column(name = "PASSWORD")
     private String password;
 
+    @Column(name = "IS_ADMIN")
+    private Integer isAdmin;
+
     @Column(name = "IS_ACTIVE")
     private Integer isActive;
     @Column(name = "CREATED_BY")

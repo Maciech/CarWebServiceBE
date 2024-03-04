@@ -15,12 +15,16 @@ public class UserService {
     UserRepository userRepository;
     UserMapper userMapper;
 
+    public UserEntity getActiveUserById(Long userId) {
+        return userRepository.findByIsActiveAndUserId(1, userId).orElseThrow();
+    }
+
     public List<UserEntity> getAllActiveUsers() {
         return userRepository.findAllByIsActive(1);
     }
 
-    public UserEntity getActiveUserById(Long userId) {
-        return userRepository.findByIsActiveAndUserId(1, userId).orElseThrow();
+    public List<UserEntity> getAllActiveAdminUsers() {
+        return userRepository.findAllByIsActiveAndIsAdmin(1, 1);
     }
 
     public UserEntity createUser(UserDto userDto) {

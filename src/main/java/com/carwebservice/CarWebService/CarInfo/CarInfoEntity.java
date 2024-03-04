@@ -2,13 +2,16 @@ package com.carwebservice.CarWebService.CarInfo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity(name = "CAR_INFO")
@@ -19,8 +22,8 @@ public class CarInfoEntity {
     @Column(name = "CAR_ID")
     private Long carId;
 
-    @Column(name = "BRAND")
-    private String brand;
+    @Column(name = "MAKE")
+    private String make;
 
     @Column(name = "MODEL")
     private String model;
@@ -29,14 +32,13 @@ public class CarInfoEntity {
     private Integer productionYear;
 
     @Column(name = "STATUS")
-    private List<String> status;
+    private String status;
 
     @Column(name = "DESTINATION")
-    private List<String> destination;
+    private String destination;
     // przyda sie jak ktos bedzie chcial online zarezerwowac lub kupic samochod
     // zgodnie z przeznaczeniem samochodu moze byc dostepne na sprzedaz jak i pod wynajem
     // wiec trzeba bedzie sprawdzic dostepnosc
-
 
     @Column(name = "IS_ACTIVE")
     private Integer isActive;

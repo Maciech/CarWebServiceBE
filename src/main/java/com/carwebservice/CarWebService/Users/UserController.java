@@ -16,14 +16,19 @@ public class UserController {
 
     UserService userService;
 
+    @GetMapping("/getUser/{userId}")
+    public ResponseEntity<UserEntity> getUserById(@PathVariable Long userId) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getActiveUserById(userId));
+    }
+
     @GetMapping("/getAllUsers")
     public ResponseEntity<List<UserEntity>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getAllActiveUsers());
     }
 
-    @GetMapping("/getUser/{userId}")
-    public ResponseEntity<UserEntity> getUserById(@PathVariable Long userId) {
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getActiveUserById(userId));
+    @GetMapping("/getAllAdminUsers")
+    public ResponseEntity<List<UserEntity>> getAllAdminUsers() {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getAllActiveAdminUsers());
     }
 
     @PostMapping("/createUser")

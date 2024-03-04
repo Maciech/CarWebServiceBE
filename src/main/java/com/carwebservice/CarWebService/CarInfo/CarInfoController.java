@@ -8,19 +8,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/cars")
 @AllArgsConstructor
 public class CarInfoController {
 
     CarInfoService carInfoService;
 
-    @GetMapping("/getAllCarInfo")
-    public ResponseEntity<List<CarInfoEntity>> getAllCarInfo() {
-        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.getAllActiveCarInfo());
+    @GetMapping("/getAllCars")
+    public ResponseEntity<List<CarInfoEntity>> getAllCarsInfo() {
+        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.getAllActiveCars());
     }
 
-    @PostMapping("/createCarInfo")
+    @GetMapping("/getAllCarsByMake/{make}")
+    public ResponseEntity<List<CarInfoEntity>> getAllCarsByMake(@PathVariable String make) {
+        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.getAllActiveCarsByMake(make));
+    }
+
+    @PostMapping("/createCar")
     public ResponseEntity<CarInfoEntity> createCarInfo(@RequestBody CarInfoDto carInfoDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.createCarInfo(carInfoDto));
+        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.createCarRecord(carInfoDto));
     }
 }

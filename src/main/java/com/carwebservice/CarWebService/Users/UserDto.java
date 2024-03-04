@@ -21,11 +21,13 @@ public class UserDto {
 
     Date dateOfBirth;
 
-    String status;
+    String email;
 
-    Integer destination;
+    Integer phoneNumber;
 
     String password;
+
+    Integer isAdmin;
 
     Integer isActive;
 

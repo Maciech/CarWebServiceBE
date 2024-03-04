@@ -15,12 +15,22 @@ public class CarInfoService {
     CarInfoRepository carInfoRepository;
     CarInfoMapper carInfoMapper;
 
-    public List<CarInfoEntity> getAllActiveCarInfo() {
+    public List<CarInfoEntity> getAllActiveCars() {
         return carInfoRepository.findAllByIsActive(1);
     }
 
-    public CarInfoEntity createCarInfo(CarInfoDto carInfoDto) {
-        return carInfoRepository.save(carInfoMapper.toEntity(updateGeneratedFields(carInfoDto)));
+    public List<CarInfoEntity> getAllActiveCarsByMake(String make) {
+        return carInfoRepository.findAllByIsActiveAndMake(1, make);
+    }
+
+    public CarInfoEntity createCarRecord(CarInfoDto carInfoDto) {
+        CarInfoEntity carInfoEntity = CarInfoEntity.builder()
+                .make(carInfoDto.getMake())
+                .model(carInfoDto.getModel())
+                .productionYear(carInfoDto.getProductionYear())
+                .isActive(1)
+                .build();
+        return carInfoRepository.save(carInfoEntity);
     }
 
     private CarInfoDto updateGeneratedFields(CarInfoDto carInfoDto) {
