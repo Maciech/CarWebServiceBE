@@ -19,8 +19,8 @@ public class CarInfoDto {
     String make;
     String model;
     Integer productionYear;
-    List<String> status;
-    List<String> destination;
+    String status;
+    String destination;
     Blob image;
     Integer isActive;
     String createdBy;
