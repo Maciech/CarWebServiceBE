@@ -1,5 +1,6 @@
 package com.carwebservice.CarWebService.CarInfo;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,13 +24,24 @@ public class CarInfoService {
         return carInfoRepository.findAllByIsActiveAndMake(1, make);
     }
 
+    public CarInfoEntity getCarById(Long carId) {
+        return carInfoRepository.findById(carId).orElseThrow();
+    }
+
+    @Transactional
     public CarInfoEntity createCarRecord(CarInfoDto carInfoDto) {
-        CarInfoEntity carInfoEntity = CarInfoEntity.builder()
-                .make(carInfoDto.getMake())
-                .model(carInfoDto.getModel())
-                .productionYear(carInfoDto.getProductionYear())
-                .isActive(1)
-                .build();
+        return carInfoRepository.save(carInfoMapper.toEntity(updateGeneratedFields(carInfoDto)));
+    }
+
+    @Transactional
+    public CarInfoEntity updateCarRecord(CarInfoDto carInfoDto) {
+        return carInfoRepository.save(carInfoMapper.toEntity(updateGeneratedFields(carInfoDto)));
+    }
+
+    @Transactional
+    public CarInfoEntity changeStatus(Long id, String status) {
+        CarInfoEntity carInfoEntity = carInfoRepository.findById(id).orElseThrow();
+        carInfoEntity.setStatus(status);
         return carInfoRepository.save(carInfoEntity);
     }
 
