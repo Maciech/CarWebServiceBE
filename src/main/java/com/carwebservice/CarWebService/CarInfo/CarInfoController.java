@@ -24,6 +24,11 @@ public class CarInfoController {
         return ResponseEntity.status(HttpStatus.OK).body(carInfoService.getAllActiveCarsByMake(make));
     }
 
+    @GetMapping("/getCar/{carId}")
+    public ResponseEntity<CarInfoEntity> getCarById(@PathVariable Long carId) {
+        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.getCarById(carId));
+    }
+
     @PostMapping("/createCar")
     public ResponseEntity<CarInfoEntity> createCarInfo(@RequestBody CarInfoDto carInfoDto) {
         return ResponseEntity.status(HttpStatus.OK).body(carInfoService.createCarRecord(carInfoDto));
