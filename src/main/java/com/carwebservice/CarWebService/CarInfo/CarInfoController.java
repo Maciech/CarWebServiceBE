@@ -33,4 +33,9 @@ public class CarInfoController {
     public ResponseEntity<CarInfoEntity> createCarInfo(@RequestBody CarInfoDto carInfoDto) {
         return ResponseEntity.status(HttpStatus.OK).body(carInfoService.createCarRecord(carInfoDto));
     }
+
+    @PutMapping("/updateCar")
+    public ResponseEntity<CarInfoEntity> updateCarInfo(@RequestBody CarInfoDto carInfoDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(carInfoService.updateCarRecord(carInfoDto));
+    }
 }
