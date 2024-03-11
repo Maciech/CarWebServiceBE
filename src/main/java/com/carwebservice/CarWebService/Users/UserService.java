@@ -19,6 +19,10 @@ public class UserService {
         return userRepository.findByIsActiveAndUserId(1, userId).orElseThrow();
     }
 
+    public UserEntity getActiveUserByEmail(UserDto userDto) {
+        return userRepository.findByIsActiveAndEmailAndPassword(1, userDto.getEmail(), userDto.getPassword()).orElseThrow();
+    }
+
     public List<UserEntity> getAllActiveUsers() {
         return userRepository.findAllByIsActive(1);
     }
