@@ -1,7 +1,5 @@
 package com.carwebservice.CarWebService.Users;
 
-import com.carwebservice.CarWebService.CarInfo.CarInfoDto;
-import com.carwebservice.CarWebService.CarInfo.CarInfoEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,15 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api/users")
 @AllArgsConstructor
 public class UserController {
 
     UserService userService;
 
-    @GetMapping("/getUser/{userId}")
+    @GetMapping("/getUserById/{userId}")
     public ResponseEntity<UserEntity> getUserById(@PathVariable Long userId) {
         return ResponseEntity.status(HttpStatus.OK).body(userService.getActiveUserById(userId));
+    }
+
+    @PostMapping("/getUserByModel")
+    public ResponseEntity<UserEntity> getUserByEmail(@RequestBody UserDto userDto) {
+        return ResponseEntity.status(HttpStatus.OK).body(userService.getActiveUserByEmail(userDto));
     }
 
     @GetMapping("/getAllUsers")
